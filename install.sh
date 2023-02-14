@@ -1,4 +1,5 @@
 #!bin/bash
+clear
 echo "Hello, ${whoami}. Udvozollek a Debian Samba AD telepitovarazslojaban."
 echo "Gyozodj meg rola ,hogy elvegezted az elokonfiguracios beallitasokat az alabbi fajlokban:"
 echo ">  /etc/hostname"
