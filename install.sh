@@ -5,6 +5,7 @@ echo "Gyozodj meg rola ,hogy elvegezted az elokonfiguracios beallitasokat az ala
 echo ">  /etc/hostname"
 echo ">  /etc/hosts"
 echo ">  /etc/network/interfaces"
+echo ">  /etc/resolv.conf"
 echo "Telepites:[Y,n]
 valasz=""
 read valasz
