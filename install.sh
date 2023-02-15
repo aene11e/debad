@@ -7,8 +7,7 @@ echo ">  /etc/hosts"
 echo ">  /etc/network/interfaces"
 echo ">  /etc/resolv.conf"
 echo "Telepites:[Y,n]"
-valasz=""
-read valasz
+read -p "Telepites:[Y,n]" valasz
 if [$valasz = "Y"]
 then
   read -p "Rendszerfrissites [ENTER]"
