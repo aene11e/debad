@@ -15,7 +15,7 @@ then
   apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
   echo "Telepites [ENTER]"
   read -p
-  apt-get install tree mc isc-dhcp-server openssh-server htop ufw unattended-upgrades update-notifier-common rkhunter ntp samba smbclient winbind krb5.config krb5.user -y
+  apt-get install tree mc isc-dhcp-server openssh-server apache2 htop ufw unattended-upgrades update-notifier-common rkhunter ntp samba smbclient winbind krb5.config krb5.user -y
 fi
 rm /etc/samba/smb.conf
 rm /etc/krb5.conf
