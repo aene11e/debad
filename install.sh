@@ -7,7 +7,7 @@ echo ">  /etc/hosts"
 echo ">  /etc/network/interfaces"
 echo ">  /etc/resolv.conf"
 read -p "Telepites:[Y,n]" valasz
-if [$valasz = "Y"]
+if [ $valasz = "Y" ]
 then
   read -p "Rendszerfrissites [ENTER]"
   apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
