@@ -6,7 +6,6 @@ echo ">  /etc/hostname"
 echo ">  /etc/hosts"
 echo ">  /etc/network/interfaces"
 echo ">  /etc/resolv.conf"
-echo "Telepites:[Y,n]"
 read -p "Telepites:[Y,n]" valasz
 if [$valasz = "Y"]
 then
