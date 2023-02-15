@@ -8,4 +8,10 @@ echo ">  /etc/network/interfaces"
 echo "Telepites:[Y,n]
 valasz=""
 read valasz
-#if [valasz -eq "Y"
+if [$valasz -eq "Y"]
+then
+  apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
+  apt-get install tree mc isc-dhcp-server openssh-server htop ufw unattended-upgrades update-notifier-common rkhunter ntp samba smbclient winbind krb5.config krb5.user -y
+fi
+rm /etc/samba/smb.conf
+rm /etc/krb5.conf
