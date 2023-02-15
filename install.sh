@@ -6,16 +6,14 @@ echo ">  /etc/hostname"
 echo ">  /etc/hosts"
 echo ">  /etc/network/interfaces"
 echo ">  /etc/resolv.conf"
-echo "Telepites:[Y,n]
+echo "Telepites:[Y,n]"
 valasz=""
 read valasz
 if [$valasz -eq "Y"]
 then
-  echo "Rendszerfrissites [ENTER]"
-  read -p
+  read -p "Rendszerfrissites [ENTER]"
   apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
-  echo "Telepites [ENTER]"
-  read -p
+  read -p "Telepites [ENTER]"
   apt-get install tree mc isc-dhcp-server openssh-server apache2 htop ufw unattended-upgrades update-notifier-common rkhunter ntp samba smbclient winbind krb5.config krb5.user -y
 fi
 rm /etc/samba/smb.conf
