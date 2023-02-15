@@ -9,7 +9,7 @@ echo ">  /etc/resolv.conf"
 echo "Telepites:[Y,n]"
 valasz=""
 read valasz
-if [$valasz -eq Y]
+if [$valasz = "Y"]
 then
   read -p "Rendszerfrissites [ENTER]"
   apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
