@@ -57,6 +57,8 @@ else
   tput bold && tput setaf 2 && read -p "Teszteles (AD/KERB) [ENTER] " && tput sgr0
   smbclient -L localhost -U%
   samba-tool domain level show
+  samba-tool domain info 10.0.0.66
+  samba-tool dns zonelist 10.0.0.66
   kinit administrator
   klist
   echo "--A program kilepett--"
