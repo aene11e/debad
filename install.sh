@@ -17,10 +17,10 @@ then
   apt-get install -y tree mc isc-dhcp-server openssh-server apache2 htop ufw unattended-upgrades cabextract libmspack0  rkhunter ntp samba smbclient winbind krb5-config krb5-user dnsutils
   wget "http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb"
   dpkg -i ttf-mscorefonts-installer_3.6_all.deb 
-  tput setaf 2 bold && read -p "Az alap Samba és Kerberos conf fájl törlése [ENTER] " && tput sgr0
-  rm /etc/samba/smb.conf
-  rm /etc/krb5.conf
-  tput setaf 2 bold && read -p "Samba-tool Domain beállítások [ENTER] " && tput sgr0
+  tput setaf 2 bold && read -p "Az alap Samba es Kerberos conf fajl torlese [ENTER] " && tput sgr0
+  rm -v /etc/samba/smb.conf
+  rm -v /etc/krb5.conf
+  tput setaf 2 bold && read -p "Samba-tool Domain beallitasok [ENTER] " && tput sgr0
   samba-tool domain provision --use-rfc2307 --realm=docnetic.net --domain=doc --server-role=dc --adminpass=S3cr3tvizsga!!
   cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
   systemctl stop smbd nmbd winbind
@@ -29,6 +29,7 @@ then
   systemctl start samba-ad-dc
   systemctl enable samba-ad-dc
   chmod 750 /var/lib/ntp_signd
+  tput setaf 2 bold && read -p "Reverse Zone letrehozasa [ENTER] " && tput sgr0
   samba-tool dns zonecreate 10.0.0.66 66.0.0.10.in-addr.arpa -U administrator 
 else
   clear
