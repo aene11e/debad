@@ -23,7 +23,7 @@ read -p "Az alap Samba és Kerberos conf fájl törlése [ENTER] "
 rm /etc/samba/smb.conf
 rm /etc/krb5.conf
 read -p "Samba-tool Domain beállítások [ENTER] "
-samba-tool domain provision --use-rfc2307 --realm=docnetic.net --domain=dc1 --server-role=dc --adminpass=S3cr3tvizsga!!
+samba-tool domain provision --use-rfc2307 --realm=docnetic.net --domain=doc --server-role=dc --adminpass=S3cr3tvizsga!!
 cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
 systemctl stop smbd nmbd winbind
 systemctl disable smbd nmbd winbind
