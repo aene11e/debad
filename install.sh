@@ -21,7 +21,7 @@ then
   rm -v /etc/samba/smb.conf
   rm -v /etc/krb5.conf
   tput setaf 2 bold && read -p "Samba-tool Domain beallitasok [ENTER] " && tput sgr0
-  samba-tool domain provision --use-rfc2307 --realm=docnetic.net --domain=doc --server-role=dc --adminpass=S3cr3tvizsga!!
+  samba-tool domain provision --use-rfc2307 --interactive
   cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
   systemctl stop smbd nmbd winbind
   systemctl disable smbd nmbd winbind
