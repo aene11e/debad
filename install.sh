@@ -7,7 +7,7 @@ echo ">  /etc/hostname"
 echo ">  /etc/hosts"
 echo ">  /etc/network/interfaces"
 echo ">  /etc/resolv.conf"
-echo "[ver.: Debian 11.6.0]
+echo "[ver.: Debian 11.6.0]"
 tput setaf 2 bold && read -p "Telepites:[Y,n] " valasz  && tput sgr0
 if [ $valasz = "Y" ]
 then
