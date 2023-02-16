@@ -31,7 +31,7 @@ then
   chmod 750 /var/lib/ntp_signd
   tput bold && tput setaf 2 && read -p "Reverse Zone letrehozasa [ENTER] " && tput sgr0
   samba-tool dns zonecreate 10.0.0.66 66.0.0.10.in-addr.arpa -U administrator
-  tput bold && tput setaf 1 echo "kdc = mydc.mydomain.com:88 KDC server megjelolese krb5.confban!"
+  tput bold && tput setaf 1 && echo "kdc = mydc.mydomain.com:88 KDC server megjelolese krb5.confban!" && tput sgr0
   ufw allow 53 88 80 443 
 else
   clear
