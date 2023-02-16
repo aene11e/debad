@@ -58,3 +58,4 @@ else
   klist
   echo "--A program kilepett--"
 fi
+tput bold && tput setaf 2 && echo "/etc/samba/smb.conf-ba egy /adatok megosztast + kozos mappa, kotegeles" && tput sgr0
