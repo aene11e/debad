@@ -36,7 +36,11 @@ then
   kdc = docnetic.net.local:88 KDC server megjelolese krb5.confban!
   [domain_realm]
     .docnetic.net.local = DOCNETIC.NET.LOCAL
-    docnetic.net.local = DOCNETIC.NET.LOCAL" && tput sgr0
+    docnetic.net.local = DOCNETIC.NET.LOCAL
+    ------------
+    /etc/resolv.conf ellenorzese
+    ------------
+    " && tput sgr0
   ufw allow 53 && ufw allow 88 && ufw allow 80 && ufw allow 443 
 else
   clear
@@ -45,8 +49,8 @@ else
   ntpq -c rv
   tput bold && tput setaf 2 && read -p "Teszteles (SRV) [ENTER] " && tput sgr0
   host -t A dc1.docnetic.net.local
-  host -t SRV_kerberos._udp.docnetic.net.local
-  host -t SRV_kerberos._ldap.docnetic.net.local
+  host -t SRV _kerberos._udp.docnetic.net.local
+  host -t SRV _ldap_tcp.docnetic.net.local
   tput bold && tput setaf 2 && read -p "Teszteles (AD/KERB) [ENTER] " && tput sgr0
   smbclient -L localhost -U%
   samba-tool domain level show
