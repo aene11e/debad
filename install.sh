@@ -33,3 +33,15 @@ else
   clear
   echo "--A program kilepett--"
 fi
+tput setaf 2 bold && read -p "Teszteles (NTP) [ENTER] " && tput sgr0
+ntpq -p
+ntpq -c rv
+tput setaf 2 bold && read -p "Teszteles (SRV) [ENTER] " && tput sgr0
+host -t A dc1.docnetic.net
+host -t SRV_kerberos._udp.docnetic.net
+host -t SRV_kerberos._ldap.docnetic.net
+tput setaf 2 bold && read -p "Teszteles (AD/KERB) [ENTER] " && tput sgr0
+smbclient -L localhost -U%
+samba-tool domain level show
+kinit administrator
+klist
