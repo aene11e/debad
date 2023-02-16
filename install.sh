@@ -7,13 +7,14 @@ echo ">  /etc/hostname"
 echo ">  /etc/hosts"
 echo ">  /etc/network/interfaces"
 echo ">  /etc/resolv.conf"
+echo "[ver.: Debian 11.6.0]
 tput setaf 2 bold && read -p "Telepites:[Y,n] " valasz  && tput sgr0
 if [ $valasz = "Y" ]
 then
   tput setaf 2 bold && read -p "Rendszerfrissites [ENTER] " && tput sgr0
   apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
   tput setaf 2 bold && read -p "Telepites [ENTER] " && tput sgr0
-  apt-get install -y tree mc isc-dhcp-server openssh-server apache2 htop ufw unattended-upgrades cabextract libmspack0  rkhunter ntp samba smbclient winbind krb5.config krb5.user
+  apt-get install -y tree mc isc-dhcp-server openssh-server apache2 htop ufw unattended-upgrades cabextract libmspack0  rkhunter ntp samba smbclient winbind krb5-config krb5-user dnsutils
   wget "http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb"
   dpkg -i ttf-mscorefonts-installer_3.6_all.deb 
   tput setaf 2 bold && read -p "Az alap Samba és Kerberos conf fájl törlése [ENTER] " && tput sgr0
