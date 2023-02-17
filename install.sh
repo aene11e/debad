@@ -1,13 +1,14 @@
 #!bin/bash
 clear
 tput setaf 1 && tput bold
-echo "Udvozollek a Debian Samba AD telepitovarazslojaban."
-echo "Gyozodj meg rola ,hogy elvegezted az elokonfiguracios beallitasokat az alabbi fajlokban:"
-echo ">  /etc/hostname"
-echo ">  /etc/hosts"
-echo ">  /etc/network/interfaces"
-echo ">  /etc/resolv.conf"
-echo "[ver.: Debian 11.6.0]"
+echo "Udvozollek a Debian Samba AD telepitovarazslojaban.
+Gyozodj meg rola ,hogy elvegezted az elokonfiguracios beallitasokat az alabbi fajlokban:
+>  /etc/hostname > dc1.docnetic.net.local
+>  /etc/hosts > 10.0.0.66 DC1.docnetic.net.local DC1
+>  /etc/network/interfaces > static ip
+>  /etc/resolv.conf > 
+[ver.: Debian 11.6.0]"
+hostnamectl set-hostname dc1.docnetic.net.local
 tput bold && tput setaf 2 && read -p "Telepites:[Y,n] Teszteles:[y,N] " valasz  && tput sgr0
 if [ $valasz = "Y" ]
 then
@@ -34,6 +35,9 @@ then
   ufw allow 53 && ufw allow 88 && ufw allow 80 && ufw allow 443 
 else
   clear
+  echo "domain dc1.docnetic.net.local" > /etc/resolv.conf
+  echo "search dc1.docnetic.net.local" >> /etc/resolv.conf
+  echo "nameserver 10.0.0.66" >> /etc/resolv.conf
   tput bold && tput setaf 1 
   echo "[realms]
   kdc = docnetic.net.local:88 KDC server megjelolese krb5.confban!
