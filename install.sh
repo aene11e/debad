@@ -35,6 +35,7 @@ then
   ufw allow 53 && ufw allow 88 && ufw allow 80 && ufw allow 443 
 else
   clear
+  ip link dev set enp0s3 down
   echo "domain dc1.docnetic.net.local" > /etc/resolv.conf
   echo "search dc1.docnetic.net.local" >> /etc/resolv.conf
   echo "nameserver 10.0.0.66" >> /etc/resolv.conf
