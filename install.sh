@@ -8,7 +8,7 @@ Gyozodj meg rola ,hogy elvegezted az elokonfiguracios beallitasokat az alabbi fa
 >  /etc/network/interfaces > static ip
 >  /etc/resolv.conf > 
 [ver.: Debian 11.6.0]"
-hostnamectl set-hostname docnetic.net.local
+hostnamectl set-hostname dc1.docnetic.net.local
 tput bold && tput setaf 2 && read -p "Telepites:[Y,n] Teszteles:[y,N] " valasz  && tput sgr0
 if [ $valasz = "Y" ]
 then
@@ -22,7 +22,7 @@ then
   rm -v /etc/samba/smb.conf
   rm -v /etc/krb5.conf
   tput bold && tput setaf 2 && read -p "Samba-tool Domain beallitasok [ENTER] " && tput sgr0
-  samba-tool domain provision --use-rfc2307 --realm=docnetic.net.local --domain=dc1 --server-role=dc --adminpass=S3cr3tvizsga!!
+  samba-tool domain provision --use-rfc2307 --realm=docnetic.net.local --domain=DC1 --server-role=dc --adminpass=S3cr3tvizsga!!
   cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
   systemctl stop smbd nmbd winbind
   systemctl disable smbd nmbd winbind
