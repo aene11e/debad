@@ -58,7 +58,7 @@ else
   tput bold && tput setaf 2 && read -p "Teszteles (SRV) [ENTER] " && tput sgr0
   host -t A dc1.docnetic.net.local
   host -t SRV _kerberos._udp.docnetic.net.local
-  host -t SRV _ldap_tcp.docnetic.net.local
+  host -t SRV _ldap._tcp.docnetic.net.local
   tput bold && tput setaf 2 && read -p "Teszteles (AD/KERB) [ENTER] " && tput sgr0
   smbclient -L localhost -U%
   samba-tool domain level show
