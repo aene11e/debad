@@ -12,11 +12,6 @@ hostnamectl set-hostname dc1.docnetic.net.local
 tput bold && tput setaf 2 && read -p "Telepites:[Y,n] Teszteles:[ENTER] " valasz  && tput sgr0
 if [ $valasz = "Y" ]
 then
-  ufw enable && ufw logging high
-  ufw allow 67/udp && ufw allow 68/udp && ufw allow DNS && ufw allow "WWW Full" && ufw allow "WWW Cache"
-  ufw allow "Kerberos Admin" && ufw allow "Kerberos Password" && ufw allow "Kerberos KDC" && ufw allow "Kerberos Full" && ufw allow LDAP
-  ufw allow LDAPS && ufw allow OpenSSH
-  ufw allow to any from 10.0.0.64/29 && ufw status verbose
   tput bold && tput setaf 2 && read -p "Rendszerfrissites [ENTER] " && tput sgr0
   apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
   tput bold && tput setaf 2 && read -p "Telepites [ENTER] " && tput sgr0
@@ -37,6 +32,11 @@ then
   chmod 750 /var/lib/ntp_signd
   tput bold && tput setaf 2 && read -p "Reverse Zone letrehozasa [ENTER] " && tput sgr0
   samba-tool dns zonecreate 10.0.0.66 66.0.0.10.in-addr.arpa -U administrator
+  ufw enable && ufw logging high
+  ufw allow 67/udp && ufw allow 68/udp && ufw allow DNS && ufw allow "WWW Full" && ufw allow "WWW Cache"
+  ufw allow "Kerberos Admin" && ufw allow "Kerberos Password" && ufw allow "Kerberos KDC" && ufw allow "Kerberos Full" && ufw allow LDAP
+  ufw allow LDAPS && ufw allow OpenSSH
+  ufw allow to any from 10.0.0.64/29 && ufw status verbose
 else
   clear
   ip link dev set enp0s3 down
@@ -65,6 +65,7 @@ else
   host -t SRV _ldap._tcp.docnetic.net.local
   tput bold && tput setaf 2 && read -p "Teszteles (AD/KERB) [ENTER] " && tput sgr0
   smbclient -L localhost -U%
+  tput bold && tput setaf 2 && read -p "Teszteles (DOMAIN) [ENTER] " && tput sgr0
   samba-tool domain level show
   samba-tool domain info 10.0.0.66
   samba-tool dns zonelist 10.0.0.66
