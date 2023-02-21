@@ -13,8 +13,9 @@ tput bold && tput setaf 2 && read -p "Telepites:[Y,n] Teszteles:[ENTER] " valasz
 if [ $valasz = "Y" ]
 then
   ufw enable && ufw logging high
-  ufw allow Apache && ufw allow dhcp && ufw allow DNS && ufw allow HTTP && ufw allow HTTPS && ufw allow Kerberos && ufw allow LDAP
-  ufw allow LDAPS && ufw allow NTP && ufw allow OpenSSH
+  ufw allow 67/udp && ufw allow 68/udp && ufw allow DNS && ufw allow WWW Full && ufw allow WWW Cache
+  ufw allow Kerberos Admin && ufw allow Kerberos Password && ufw allow Kerberos KDC && ufw allow Kerberos Full && ufw allow LDAP
+  ufw allow LDAPS && ufw allow OpenSSH
   ufw allow from 10.0.0.64/29 && ufw status verbose
   tput bold && tput setaf 2 && read -p "Rendszerfrissites [ENTER] " && tput sgr0
   apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
