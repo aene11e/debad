@@ -13,8 +13,8 @@ tput bold && tput setaf 2 && read -p "Telepites:[Y,n] Teszteles:[ENTER] " valasz
 if [ $valasz = "Y" ]
 then
   ufw enable && ufw logging high
-  ufw allow 67/udp && ufw allow 68/udp && ufw allow DNS && ufw allow WWW Full && ufw allow WWW Cache
-  ufw allow Kerberos Admin && ufw allow Kerberos Password && ufw allow Kerberos KDC && ufw allow Kerberos Full && ufw allow LDAP
+  ufw allow 67/udp && ufw allow 68/udp && ufw allow DNS && ufw allow "WWW Full" && ufw allow "WWW Cache"
+  ufw allow "Kerberos Admin" && ufw allow "Kerberos Password" && ufw allow "Kerberos KDC" && ufw allow "Kerberos Full" && ufw allow LDAP
   ufw allow LDAPS && ufw allow OpenSSH
   ufw allow to any from 10.0.0.64/29 && ufw status verbose
   tput bold && tput setaf 2 && read -p "Rendszerfrissites [ENTER] " && tput sgr0
