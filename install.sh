@@ -12,6 +12,10 @@ hostnamectl set-hostname dc1.docnetic.net.local
 tput bold && tput setaf 2 && read -p "Telepites:[Y,n] Teszteles:[ENTER] " valasz  && tput sgr0
 if [ $valasz = "Y" ]
 then
+  ufw enable && ufw logging high
+  ufw allow Apache && ufw allow dhcp && ufw allow DNS && ufw allow HTTP && ufw allow HTTPS && ufw allow Kerberos && ufw allow LDAP
+  ufw allow LDAPS && ufw allow NTP && ufw allow OpenSSH
+  ufw allow from 10.0.0.64/29 && ufw status verbose
   tput bold && tput setaf 2 && read -p "Rendszerfrissites [ENTER] " && tput sgr0
   apt-get update -o Acquire::ForceIPv4=True && apt-get dist-upgrade -o Acquire::ForceIPv4=True -y
   tput bold && tput setaf 2 && read -p "Telepites [ENTER] " && tput sgr0
@@ -32,7 +36,6 @@ then
   chmod 750 /var/lib/ntp_signd
   tput bold && tput setaf 2 && read -p "Reverse Zone letrehozasa [ENTER] " && tput sgr0
   samba-tool dns zonecreate 10.0.0.66 66.0.0.10.in-addr.arpa -U administrator
-  ufw allow 53 && ufw allow 88 && ufw allow 80 && ufw allow 443 
 else
   clear
   ip link dev set enp0s3 down
