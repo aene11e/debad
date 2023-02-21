@@ -9,7 +9,7 @@ Gyozodj meg rola ,hogy elvegezted az elokonfiguracios beallitasokat az alabbi fa
 >  /etc/resolv.conf > 
 [ver.: Debian 11.6.0]"
 hostnamectl set-hostname dc1.docnetic.net.local
-tput bold && tput setaf 2 && read -p "Telepites:[Y,n] Teszteles:[y,N] " valasz  && tput sgr0
+tput bold && tput setaf 2 && read -p "Telepites:[Y,n] Teszteles:[ENTER] " valasz  && tput sgr0
 if [ $valasz = "Y" ]
 then
   tput bold && tput setaf 2 && read -p "Rendszerfrissites [ENTER] " && tput sgr0
