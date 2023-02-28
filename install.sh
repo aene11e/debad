@@ -39,7 +39,6 @@ then
   ufw allow to any from 10.0.0.64/29 && ufw status verbose
 else
   clear
-  ip link dev set enp0s3 down
   echo "domain dc1.docnetic.net.local" > /etc/resolv.conf
   echo "search dc1.docnetic.net.local" >> /etc/resolv.conf
   echo "nameserver 10.0.0.66" >> /etc/resolv.conf
@@ -67,8 +66,8 @@ else
   smbclient -L localhost -U%
   tput bold && tput setaf 2 && read -p "Teszteles (DOMAIN) [ENTER] " && tput sgr0
   samba-tool domain level show
-  samba-tool domain info 10.0.0.66
-  samba-tool dns zonelist 10.0.0.66
+  samba-tool domain info 10.0.0.66 -U DOCNETIC\Administrator
+  samba-tool dns zonelist 10.0.0.66 -U DOCNETIC\Administrator
   kinit administrator
   klist
   echo "--A program kilepett--"
