@@ -66,9 +66,9 @@ else
   smbclient -L localhost -U%
   tput bold && tput setaf 2 && read -p "Teszteles (DOMAIN) [ENTER] " && tput sgr0
   samba-tool domain level show
-  samba-tool domain info 10.0.0.66
-  samba-tool dns zonelist 10.0.0.66
   kinit administrator
   klist
+  samba-tool dns zonelist 10.0.0.66
+  samba-tool domain info 10.0.0.66
   echo "--A program kilepett--"
 fi
