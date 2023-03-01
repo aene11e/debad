@@ -29,7 +29,6 @@ iface enp0s3 inet dhcp
 #dns-search docnetic.net.local
 #vlan_raw_device enp0s8
 
-# VLAN 30
 auto enp0s8
 iface enp0s8 inet static
 address 10.0.0.66/29
@@ -37,6 +36,13 @@ gateway 10.0.0.65
 dns-domain dc1.docnetic.net.local
 dns-nameservers 10.0.0.66 8.8.8.8 4.4.4.4 1.1.1.1 1.0.0.1
 dns-search docnetic.net.local
+
+auto enp0s8
+iface enp0s8 inet6 static
+address 2001:DB8:ACAD:B::1
+netmask 64
+gateway FE80::1
+dns-nameservers 2001:DB8:ACAD:B::1
 
 # VLAN 50
 #auto enp0s8.50
