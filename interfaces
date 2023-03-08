@@ -1,4 +1,4 @@
-source /etc/network/interfaces.d/*
+#source /etc/network/interfaces.d/*
 
 # The loopback network interface
 auto lo
@@ -9,32 +9,16 @@ allow-hotplug enp0s3
 iface enp0s3 inet dhcp
 
 #Vizsgaremek network interface
-# VLAN 10
-#auto enp0s8.10
-#iface enp0s8.10 inet static
-#address 10.0.0.2/27
-#gateway 10.0.0.1
-#dns-domain dc1.docnetic.net.local
-#dns-nameservers 10.0.0.66 8.8.8.8 4.4.4.4 1.1.1.1 1.0.0.1
-#dns-search docnetic.net.local
-#vlan_raw_device enp0s8
-
-# VLAN 20
-#auto enp0s8.20
-#iface enp0s8.20 inet static
-#address 10.0.0.35/27
-#gateway 10.0.0.33
-#dns-domain dc1.docnetic.net.local
-#dns-nameservers 10.0.0.66 8.8.8.8 4.4.4.4 1.1.1.1 1.0.0.1
-#dns-search docnetic.net.local
-#vlan_raw_device enp0s8
-
 auto enp0s8
 iface enp0s8 inet static
 address 10.0.0.66/29
 gateway 10.0.0.65
 dns-domain dc1.docnetic.net.local
-dns-nameservers 10.0.0.66 8.8.8.8 4.4.4.4 1.1.1.1 1.0.0.1
+dns-nameserver 10.0.0.66
+dns-nameserver 8.8.8.8
+dns-nameserver 8.8.4.4
+dns-nameserver 1.1.1.1
+dns-nameserver 1.0.0.1
 dns-search docnetic.net.local
 
 auto enp0s8
@@ -42,14 +26,5 @@ iface enp0s8 inet6 static
 address 2001:DB8:ACAD:B::1
 netmask 64
 gateway FE80::1
-dns-nameservers 2001:DB8:ACAD:B::1
-
-# VLAN 50
-#auto enp0s8.50
-#iface enp0s8.50 inet static
-#address 10.0.0.82/29
-#gateway 10.0.0.81
-#dns-domain dc1.docnetic.net.local
-#dns-nameservers 10.0.0.66 8.8.8.8 4.4.4.4 1.1.1.1 1.0.0.1
-#dns-search docnetic.net.local
-#vlan_raw_device enp0s8
+dns-nameserver 2001:DB8:ACAD:B::1
+dns-search docnetic.net.local
