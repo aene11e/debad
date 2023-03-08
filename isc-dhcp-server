@@ -1,5 +1,0 @@
-#INTERFACESv4="enp0s8 enp0s8.10 enp0s8.20 enp0s8.50"
-#INTERFACESv6="enp0s8 enp0s8.10 enp0s8.20 enp0s8.50"
-
-INTERFACESv4="enp0s8"
-INTERFACESv6="enp0s8"
