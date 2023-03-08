@@ -32,11 +32,14 @@ then
   chmod 750 /var/lib/ntp_signd
   tput bold && tput setaf 2 && read -p "Reverse Zone letrehozasa [ENTER] " && tput sgr0
   samba-tool dns zonecreate 10.0.0.66 66.0.0.10.in-addr.arpa -U administrator
+  tput bold && tput setaf 2 && read -p "Reverse Zone letrehozasa IPv6 [ENTER] " && tput sgr0
+  samba-tool dns zonecreate 10.0.0.66 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.b.0.0.0.d.a.c.a.8.b.d.0.1.0.0.2.ip6.arpa -U administrator
   ufw enable && ufw logging high
   ufw allow 67/udp && ufw allow 68/udp && ufw allow DNS && ufw allow "WWW Full" && ufw allow "WWW Cache"
   ufw allow "Kerberos Admin" && ufw allow "Kerberos Password" && ufw allow "Kerberos KDC" && ufw allow "Kerberos Full" && ufw allow LDAP
   ufw allow LDAPS && ufw allow OpenSSH
   ufw allow to any from 10.0.0.64/29 && ufw status verbose
+  ufw allow to any from 2001:db8:acad:b::1/64 && ufw status verbose
 else
   clear
   echo "domain dc1.docnetic.net.local" > /etc/resolv.conf
@@ -60,6 +63,7 @@ else
   ntpq -c rv
   tput bold && tput setaf 2 && read -p "Teszteles (SRV) [ENTER] " && tput sgr0
   host -t A dc1.docnetic.net.local
+  host -t AAAA dc1.docnetic.net.local
   host -t SRV _kerberos._udp.docnetic.net.local
   host -t SRV _ldap._tcp.docnetic.net.local
   tput bold && tput setaf 2 && read -p "Teszteles (AD/KERB) [ENTER] " && tput sgr0
@@ -68,7 +72,7 @@ else
   samba-tool domain level show
   kinit administrator
   klist
-  samba-tool dns zonelist 10.0.0.66
-  samba-tool domain info 10.0.0.66
+  samba-tool dns zonelist 10.0.0.66 -UAdministrator
+  samba-tool domain info 10.0.0.66 -UAdministrator
   echo "--A program kilepett--"
 fi
